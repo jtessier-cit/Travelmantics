@@ -44,4 +44,7 @@ dependencies {
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
+    // add Firebase auth drop in
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+
 }
