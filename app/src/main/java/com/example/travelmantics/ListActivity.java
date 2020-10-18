@@ -23,10 +23,10 @@ import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
-    ArrayList<TravelDeal> deals;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseReference;
-    private ChildEventListener mChildEventListener;
+//    ArrayList<TravelDeal> deals;
+//    private FirebaseDatabase mFirebaseDatabase;
+//    private DatabaseReference mDatabaseReference;
+//    private ChildEventListener mChildEventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,16 @@ public class ListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.list_activity_menu, menu);
+        MenuItem insertMenu = menu.findItem(R.id.insert_menu);
+        if (FirebaseUtil.isAdmin == true) {
+            insertMenu.setVisible(true);
+        }
+        else {
+            insertMenu.setVisible(false);
+        }
+
+
+
         return true;
     }
 
@@ -84,5 +94,9 @@ public class ListActivity extends AppCompatActivity {
 
         FirebaseUtil.attachListener();
 
+    }
+
+    public void showMenu() {
+        invalidateOptionsMenu();
     }
 }
